@@ -1,32 +1,13 @@
--- Fuzzy finder
 return {
-  -- https://github.com/nvim-telescope/telescope.nvim
-  'nvim-telescope/telescope.nvim',
-  lazy = true,
-  dependencies = {
-    -- https://github.com/nvim-lua/plenary.nvim
-    { 'nvim-lua/plenary.nvim' },
-    {
-      -- https://github.com/nvim-telescope/telescope-fzf-native.nvim
-      'nvim-telescope/telescope-fzf-native.nvim',
-      build = 'make',
-      cond = function()
-        return vim.fn.executable 'make' == 1
-      end,
-    },
+  "nvim-telescope/telescope.nvim",
+  dependencies = { "nvim-lua/plenary.nvim" },
+  lazy = false,
+  config = true,
+  keys = {
+    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+    { "<leader>fg", "<cmd>Telescope live_grep<cr>",  desc = "Live Grep" },
+    { "<leader>fb", "<cmd>Telescope buffers<cr>",    desc = "Buffers" },
+    { "<leader>fh", "<cmd>Telescope help_tags<cr>",  desc = "Help Tags" },
+    { "<leader>fs", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Fuzzy Search Buffer" },
   },
-  opts = {
-    defaults = {
-      layout_config = {
-        vertical = {
-          width = 0.75
-        }
-      },
-      path_display = {
-        filename_first = {
-          reverse_directories = true
-        }
-      },
-    }
-  }
 }

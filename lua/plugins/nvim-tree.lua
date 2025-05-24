@@ -1,27 +1,11 @@
 return {
-  -- https://github.com/nvim-tree/nvim-tree.lua
-  'nvim-tree/nvim-tree.lua',
-  dependencies = {
-    -- https://github.com/nvim-tree/nvim-web-devicons
-    'nvim-tree/nvim-web-devicons', -- Fancy icon support
+  "nvim-tree/nvim-tree.lua",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+  lazy = false,
+  config = true,
+  keys = {
+    { "<leader>ee", "<cmd>NvimTreeToggle<cr>", desc = "Toggle NvimTree" },
+    { "<leader>er", "<cmd>NvimTreeFocus<cr>",  desc = "Focus NvimTree" },
+    { "<leader>ef", "<cmd>NvimTreeFindFile<cr>", desc = "Find File in Tree" },
   },
-  opts = {
-    actions = {
-      open_file = {
-        window_picker = {
-          enable = false
-        },
-      }
-    },
-    filters = {
-      custom = { "^/Users/marcostalman/Library/Calendars$" },
-    },
-  },
-  config = function(_, opts)
-    -- Recommended settings to disable default netrw file explorer
-    vim.g.loaded_netrw = 1
-    vim.g.loaded_netrwPlugin = 1
-    require("nvim-tree").setup(opts)
-  end
 }
-
